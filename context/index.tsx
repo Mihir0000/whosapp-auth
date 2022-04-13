@@ -1,8 +1,6 @@
 import React,{useState,createContext} from "react";
 
-export const Context=createContext({userName:"",setUserName: React.Dispatch<React.SetStateAction<string>>,
-secret:"",
-setSecret:React.Dispatch<React.SetStateAction<string>>});
+export const Context=createContext<any>({});
 
 export const ContextProvider=(props:any)=>{
     const [userName,setUserName]=useState("")
