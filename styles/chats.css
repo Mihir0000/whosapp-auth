@@ -3,44 +3,48 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    width: calc(100vw );
-    height: calc(100vh );
-    background: linear-gradient(150deg, #d9dbe2 20%, #4c547094 20%,#b1bee8 80%, #20222932 20%);
-  }
-  
-  .auth-container {
+    width: calc(100vw);
+    height: calc(100vh);
+    background: linear-gradient(
+        150deg,
+        #d9dbe2 20%,
+        #4c547094 20%,
+        #b1bee8 80%,
+        #20222932 20%
+    );
+}
+
+.auth-container {
     width: 50%;
     height: 60%;
 
     position: relative;
-    top: calc(20vh );
-    left: calc(25vw );
+    top: calc(20vh);
+    left: calc(25vw);
     background-color: #4a5162;
     border-radius: 24px;
     box-shadow: 0 2px 15px rgb(0 0 0 / 68%);
-    
-  }
-  
-  .auth-form {
-    padding-top: 33px;
+}
+
+.auth-form {
+    padding-top: 22px;
     width: 60%;
     margin-left: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-  }
-  
-  .auth-title {
+}
+
+.auth-title {
     padding-bottom: 20px;
     width: 100%;
     text-align: center;
     color: white;
     font-size: 26px;
     font-family: 'Montserrat', sans-serif;
-    
-  }
-  
-  .text-title {
+}
+
+.text-title {
     width: 100%;
     padding: 8px;
     margin-bottom: 24px;
@@ -49,95 +53,86 @@
     border-width: 0px;
     border-bottom: 5px solid #726dfe;
     color: white;
-  }
+}
 
-  .login-buttons{
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      margin-left: 0%;
-      color:white;
-      
-      justify-content: space-between;
-      margin-bottom: 10%;
-  }
+.login-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-left: 0%;
+    color: white;
 
-  .white-font-buttons{
-      color:white;
-      border-radius: 10px;
-      border: 2.8px solid #726dfe;
-      font-size: medium;
-      font-weight: 600;
+    justify-content: space-between;
+    margin-bottom: 10%;
+}
+
+.white-font-buttons {
+    color: white;
+    border-radius: 10px;
+    border: 2.8px solid #726dfe;
+    font-size: medium;
+    font-weight: 600;
     font-family: Helvetica, sans-serif;
+}
 
-
-
-  }
-
-  .active-button{
+.active-button {
     background-color: #e8e8e8eb;
     color: #020715;
     font-size: large;
     font-weight: 800;
-    border:none;
+    border: none;
     border-bottom: 5px solid #161533;
     border-right: 3px solid #161533;
+}
 
-
-  }
-
-
-  .enter-button{
-      
-      color:#e1e9ff;
-      background-color: #011343;
-      display: flex;
-      flex-direction: row;
-      min-width:100%;
-      justify-content: space-around;
+.enter-button {
+    color: #e1e9ff;
+    background-color: #011343;
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+    justify-content: space-around;
     border: 2px solid #726dfe;
     font-weight: 700;
-  }
+}
 
-  .enter-button-container{
-    background-color:none;
-    max-width:40% ;
-    margin-top:10%;
+.enter-button-container {
+    background-color: none;
+    max-width: 40%;
+    margin-top: 10%;
     margin-bottom: 10%;
     border-radius: 5px;
-  }
-  .forgot-button-container{
-    background-color:none;
-    max-width:max-content ;
-    margin-top:10%;
-    
+}
+.forgot-button-container {
+    background-color: none;
+    max-width: max-content;
+    margin-top: 10%;
+
     margin-bottom: 10%;
     border-radius: 5px;
     /* border-color:#161a24;
     border-width: 10px; */
-  }
-  .forgot-button{
-      
-    color:#e1e9ff;
+}
+.forgot-button {
+    color: #e1e9ff;
     background-color: none;
     display: flex;
-    
+
     flex-direction: row;
-    min-width:100%;
+    min-width: 100%;
     justify-content: space-around;
     border: 2px solid #726dfe;
-    border-radius:5px ;
+    border-radius: 5px;
 }
 
-  .row{
+.row {
     display: flex;
-      flex-direction: row;
-      min-width:100%;
-      justify-content: space-around;
-  }
-  
+    flex-direction: row;
+    min-width: 100%;
+    justify-content: space-around;
+}
 
-  .text-input {
+.text-input {
     width: 100%;
     padding: 8px;
     margin-bottom: 24px;
@@ -146,14 +141,13 @@
     border-width: 0px;
     border-bottom: 2px solid #726dfe;
     color: white;
-  }
-  
-  
-  .text-input::placeholder {
+}
+
+.text-input::placeholder {
     color: hsla(0, 0%, 100%, 0.568);
-  }
-  
-  .submit-button {
+}
+
+.submit-button {
     width: 100%;
     padding: 14px;
     border-radius: 4px;
@@ -162,50 +156,45 @@
     background-color: #726dfe;
     color: white;
     outline: none;
-  }
-  
-  .submit-button::hover {
+}
+
+.submit-button::hover {
     background-color: #cac8fe;
-  }
+}
 
-
-
-  @media only screen and (max-width: 1110px) {
-    .auth-container{
-      width: 80%;
-      height: 60%;
-      top: calc(20vh );
-      left: calc(10vw );
-      
+@media only screen and (max-width: 1110px) {
+    .auth-container {
+        width: 80%;
+        height: 60%;
+        top: calc(20vh);
+        left: calc(10vw);
     }
-  }
+}
 
-  @media only screen and (max-width: 600px) {
-    .auth-container{
-      width: 92%;
-      height: 60%;
-      top: calc(20vh );
-      left: calc(4vw );
-      
+@media only screen and (max-width: 600px) {
+    .auth-container {
+        width: 92%;
+        height: 60%;
+        top: calc(20vh);
+        left: calc(4vw);
     }
 
-    .auth-form{
-      width: 92%;
-      margin-left: 4%;
+    .auth-form {
+        width: 92%;
+        margin-left: 4%;
     }
-  }
+}
 
-  .scroll-option{
+.scroll-option {
     display: none;
-  }
-  @media only screen and (max-height: 700px) {
-    .auth-container{
-      
-  overflow: scroll;
-  padding-bottom: 5%;
 }
+@media only screen and (max-width: 700px) {
+    .auth-container {
+        overflow: scroll;
+        padding-bottom: 5%;
+    }
 
-.scroll-option{
-  display: flex;
-}
+    .scroll-option {
+        display: none;
+    }
 }

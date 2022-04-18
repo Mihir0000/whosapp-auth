@@ -1,15 +1,21 @@
-import '../styles/globals.css'
-import '../styles/chats.css'
-import type { AppProps } from 'next/app'
-import { ContextProvider } from '../context'
-import Backendless from 'backendless'
-function MyApp({ Component, pageProps }: AppProps) {
-  Backendless.initApp('0F12B69E-DAB8-64B1-FF04-5629AD521700', 'D0E9777B-0A5C-4894-8FD3-E92F69AE4D51');
-  return (
-    <ContextProvider>
-      <Component {...pageProps} />
-    </ContextProvider>
-)
-}
+import '../styles/globals.css';
+import '../styles/chats.css';
+import type { AppProps } from 'next/app';
+import { ContextProvider } from '../context';
+import Backendless from 'backendless';
+import React, { FC } from 'react';
+import { wrapper } from '../components/redux/store';
 
-export default MyApp
+const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
+    Backendless.initApp(
+        '2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00',
+        '7AF7BA66-76AA-4745-9E9B-54E91012A820'
+    );
+    return (
+        <ContextProvider>
+            <Component {...pageProps} />
+        </ContextProvider>
+    );
+};
+
+export default wrapper.withRedux(WrappedApp);
