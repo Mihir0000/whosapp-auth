@@ -9,3 +9,9 @@ export enum loginConstant {
     LOGIN_SUCCESS = 'LOGIN_SUCCESS',
     LOGIN_FAIL = 'LOGIN_FAIL',
 }
+
+export enum logoutConstant {
+    LOGOUT_REQUEST = 'LOGOUT_REQUEST',
+    LOGOUT_SUCCESS = 'LOGOUT_SUCCESS',
+    LOGOUT_FAIL = 'LOGOUT_FAIL',
+}

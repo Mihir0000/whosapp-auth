@@ -1,0 +1,20 @@
+.logoutBtn {
+    position: fixed;
+    right: 50px;
+    top: 50px;
+    z-index: 2;
+    background-color: red;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-family: 'Roboto';
+    transition: all 0.9s;
+}
+
+.logoutBtn:hover {
+    background-color: rgb(45, 45, 104);
+}

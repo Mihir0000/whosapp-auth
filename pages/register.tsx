@@ -50,9 +50,15 @@ function Auth() {
 
         if (!existUser) {
             dispatch(registerActionCreator(userName, secret));
-            Router.push('/chat');
+            alert('User has been Registered. Redirecting into SignIn page');
+            setTimeout(() => {
+                Router.replace('/');
+            }, 100);
         } else {
-            alert('User has been exist. Please Sign In');
+            alert('User already Exists. Redirecting into SignIn page');
+            setTimeout(() => {
+                Router.replace('/');
+            }, 100);
         }
 
         console.log(userName, secret, 'clicked');
@@ -74,7 +80,7 @@ function Auth() {
                     >
                         <div style={{ margin: 5 }}></div>
 
-                        <Link href="/" passHref>
+                        <Link href="/" replace>
                             <Button className="white-font-buttons">
                                 <ArrowBack></ArrowBack>Sign In
                             </Button>
@@ -168,7 +174,7 @@ function Auth() {
                             <TextField
                                 sx={{ color: 'warning.main', width: 1 }}
                                 id="repeat-password"
-                                label="Repeat Password"
+                                label="Retype Password"
                                 variant="standard"
                                 color="primary"
                                 type="password"

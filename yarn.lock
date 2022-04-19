@@ -949,6 +949,11 @@
     "path-type" "^4.0.0"
     "yaml" "^1.7.2"
 
+"cross-domain-storage@^2.0.7":
+  "integrity" "sha512-IWaLY2NbAxX5yYxgNxQVx4HzWM2+LZi8LQPS4ILXX3JFF2TQ2rpph0Rh1kRWN8AZ01W0YuLY1FidqVWTyD5mBQ=="
+  "resolved" "https://registry.npmjs.org/cross-domain-storage/-/cross-domain-storage-2.0.7.tgz"
+  "version" "2.0.7"
+
 "cross-spawn@^7.0.2":
   "integrity" "sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w=="
   "resolved" "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.3.tgz"

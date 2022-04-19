@@ -17,6 +17,7 @@
     "@types/react-redux": "^7.1.15",
     "axios": "^0.21.1",
     "backendless": "^6.3.9",
+    "cross-domain-storage": "^2.0.7",
     "next": "12.1.4",
     "next-redux-wrapper": "^7.0.5",
     "react": "18.0.0",

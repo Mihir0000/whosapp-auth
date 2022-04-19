@@ -1,4 +1,4 @@
-import { registerConstant, loginConstant } from '../constants/authConstants';
+import { registerConstant, loginConstant, logoutConstant } from '../constants/authConstants';
 import { HYDRATE } from 'next-redux-wrapper';
 import { AnyAction } from 'redux';
 
@@ -31,6 +31,12 @@ const registerReducer = (
                 error: null,
                 user: [],
             };
+        case logoutConstant.LOGOUT_REQUEST:
+            return {...state,
+                loading: true,
+                error: null,
+
+            };
         case registerConstant.REGISTER_SUCCESS:
         case loginConstant.LOGIN_SUCCESS:
             return {
@@ -39,13 +45,26 @@ const registerReducer = (
                 error: null,
                 user: action.payload,
             };
+        case logoutConstant.LOGOUT_SUCCESS:
+            return {
+                loading: false,
+                error: null,
+                user: [],
+            };
         case registerConstant.REGISTER_FAIL:
         case loginConstant.LOGIN_FAIL:
+        
             return {
                 ...state,
                 loading: false,
                 error: action.payload,
                 user: [],
+            };
+        case logoutConstant.LOGOUT_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
             };
         default:
             return state;

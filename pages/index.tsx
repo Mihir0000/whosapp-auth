@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../context';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
@@ -6,32 +6,101 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActionCreator } from '../components/redux/action-crators/userActionCreators';
-import { loginActionCreator } from '../components/redux/action-crators/authActionCreators';
+import {
+    loginActionCreator,
+    userLogout,
+} from '../components/redux/action-crators/authActionCreators';
 import { RootStateOrAny } from 'react-redux';
-import Router from 'next/router';
 
 function Auth() {
     const { userName, setUserName, secret, setSecret } = useContext(Context);
     const dispatch = useDispatch();
-    const user = useSelector((state: RootStateOrAny) => state.AllUser.data);
-    const signInHandler = () => {
-        let originalUser;
-        user.map((item: any) => {
-            if (item.email === userName && item.password === secret) {
-                originalUser = item;
-            }
-        });
-        if (!originalUser) {
-            alert('Invalid User or Password');
-        } else {
-            dispatch(loginActionCreator(userName, secret));
-            Router.push('/chat');
-        }
+    const uName = useSelector((state: RootStateOrAny) => state.User.user.email);
+    // const [localUser, setLocalUser] = useState(null);
+    // const [submit, setSubmit] = useState(false);
+
+    // const localData = localStorage.getItem(
+    //     'Backendless_2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00'
+    // );
+
+    // if (typeof localData === 'string') {
+    //     console.log(JSON.parse(localData));
+    // }
+    // if (localUser) {
+    //     // console.log(localUser);
+    //     const {
+    //         'current-user-id': currentUser,
+    //         stayLoggedIn,
+    //         'user-token': userToken,
+    //     } = localUser;
+    //     // console.log(currentUser, stayLoggedIn, userToken);
+    // }
+
+    // const [value, setValue] = useState<any>({});
+    // function setting_submit() {
+    //     setValue(
+    //         localStorage.getItem(
+    //             'Backendless_2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00'
+    //         )
+    //     );
+
+    // }
+
+    // function setcookie() {
+    //     var user;
+    //     console.log('value', value);
+
+    //     if (value && userName) {
+    //         console.log('inside value and username');
+    //         user = !!value ? JSON.parse(value) : undefined;
+    //         var user_name = userName.split('@')[0];
+    //         // console.log(user_name);
+    //         console.log('userName +value', userName);
+
+    //         user.user_name = user_name;
+    //         localStorage.setItem(
+    //             'Backendless_2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00',
+    //             JSON.stringify(user)
+    //         );
+    //         // setLocalUser(user);
+    //     }
+    // }
+    useEffect(() => {
+        // localStorage.removeItem('Backendless');
+        // localStorage.removeItem(
+        //     'Backendless_2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00'
+        // );
+        dispatch(userLogout());
+    }, []);
+
+    const submitHandler = (e: any) => {
+        e.preventDefault();
+        // const value = localStorage.getItem(
+        //     'Backendless_2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00'
+        // );
+        // console.log(userName);
+
+        // var user;
+        // if (value && userName) {
+        //     user = !!value ? JSON.parse(value) : undefined;
+        //     var user_name = userName.split('@')[0];
+        //     console.log(user_name);
+        //     console.log(userName);
+
+        //     user.user_name = user_name;
+        //     localStorage.setItem(
+        //         'Backendless_2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00',
+        //         JSON.stringify(user)
+        //     );
+        //     setLocalUser(user);
+        // }
+        // setSubmit(true);
     };
 
-    useEffect(() => {
+    const signInHandler = () => {
+        dispatch(loginActionCreator(userName, secret));
         dispatch(userActionCreator());
-    }, [dispatch]);
+    };
 
     return (
         <div className="background">
@@ -39,9 +108,7 @@ function Auth() {
                 <form
                     className="auth-form"
                     style={{ display: 'flex' }}
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                    }}
+                    onSubmit={submitHandler}
                 >
                     <div
                         className="auth-title text-title "
@@ -65,7 +132,7 @@ function Auth() {
                         </Button>
                         <div style={{ margin: 5 }}></div>
 
-                        <Link href={'/register'} passHref>
+                        <Link href={'/register'} replace>
                             <Button className="white-font-buttons">
                                 Register
                                 <ArrowForwardIcon></ArrowForwardIcon>

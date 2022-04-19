@@ -8,7 +8,7 @@ export const userActionCreator = () => {
         });
         try {
             const { data } = await axios.get(
-                'https://fastsand.backendless.app/api/data/whosapp'
+                'https://fastsand.backendless.app/api/data/Users'
             );
 
             dispatch({
