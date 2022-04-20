@@ -156,6 +156,7 @@ function Auth() {
                         <TextField
                             sx={{ color: 'warning.main', width: 1 }}
                             id="email"
+                            autoComplete="off"
                             label="Enter Email"
                             variant="standard"
                             color="primary"
