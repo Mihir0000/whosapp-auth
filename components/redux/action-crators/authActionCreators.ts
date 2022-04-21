@@ -94,8 +94,8 @@ export const loginActionCreator = (email: string, password: string) => {
                     payload: data.email,
                 });
                 setTimeout(() => {
-                    Router.replace('https://chat-ui-backend.vercel.app/');
-                    // Router.replace('http://localhost:3000/chat');
+                    // Router.replace('https://chat-ui-backend.vercel.app/');
+                    Router.replace('http://localhost:3000/chat');
                 }, 500);
             })
             .catch(function (error) {

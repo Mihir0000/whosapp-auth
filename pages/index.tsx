@@ -11,7 +11,7 @@ import {
     userLogout,
 } from '../components/redux/action-crators/authActionCreators';
 import { RootStateOrAny } from 'react-redux';
-var createHost = require('cross-domain-storage/host');
+// var createHost = require('cross-domain-storage/host');
 
 function Auth() {
     const { userName, setUserName, secret, setSecret } = useContext(Context);
@@ -97,23 +97,23 @@ function Auth() {
         // }
         // setSubmit(true);
     };
-    useEffect(() => {
-        console.log('using host');
-        var storageHost = createHost([
-            {
-                origin: 'https://chat-ui-backend.vercel.app/',
-                allowedMethods: ['get', 'set', 'remove'],
-            },
-            {
-                origin: 'https://whosapp-auth.vercel.app/chat',
-                allowedMethods: ['get', 'set', 'remove'],
-            },
-            {
-                origin: 'http://localhost:3000',
-                allowedMethods: ['get', 'set', 'remove'],
-            },
-        ]);
-    }, []);
+    // useEffect(() => {
+    //     console.log('using host');
+    //     var storageHost = createHost([
+    //         {
+    //             origin: 'https://chat-ui-backend.vercel.app/',
+    //             allowedMethods: ['get', 'set', 'remove'],
+    //         },
+    //         {
+    //             origin: 'https://whosapp-auth.vercel.app/chat',
+    //             allowedMethods: ['get', 'set', 'remove'],
+    //         },
+    //         {
+    //             origin: 'http://localhost:3000',
+    //             allowedMethods: ['get', 'set', 'remove'],
+    //         },
+    //     ]);
+    // }, []);
 
     const signInHandler = () => {
         dispatch(loginActionCreator(userName, secret));
