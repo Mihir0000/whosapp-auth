@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../context';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
+var validator = require('validator');
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Link from 'next/link';
@@ -11,6 +12,9 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { registerActionCreator } from '../components/redux/action-crators/authActionCreators';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import Router from 'next/router';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+const notify = (text: string) => toast(text);
 
 function Auth() {
     const { userName, setUserName, secret, setSecret } = useContext(Context);
@@ -37,9 +41,11 @@ function Auth() {
 
     const submitHandler = (e: any) => {
         e.preventDefault();
+        console.log('okk');
     };
     const onClick = () => {
         let existUser: boolean = false;
+        let valid: boolean = false;
         console.log(existUser);
         for (let i = 0; i < AllUserData.length; i++) {
             if (AllUserData[i].email === userName) {
@@ -47,18 +53,26 @@ function Auth() {
                 break;
             }
         }
-
-        if (!existUser) {
-            dispatch(registerActionCreator(userName, secret));
-            alert('User has been Registered. Redirecting into SignIn page');
-            setTimeout(() => {
-                Router.replace('/');
-            }, 100);
+        if (validator.isEmail(userName)) {
+            valid = true;
+        }
+        console.log(existUser);
+        if (userName.length === 0 || secret.length === 0 || !valid) {
+            notify('Please Enter Valid User or Password');
         } else {
-            alert('User already Exists. Redirecting into SignIn page');
-            setTimeout(() => {
-                Router.replace('/');
-            }, 100);
+            if (!existUser && valid) {
+                dispatch(registerActionCreator(userName, secret));
+                notify('Regisration Successful ✅');
+                setTimeout(() => {
+                    Router.replace('/');
+                }, 100);
+            } else {
+                // notify('Redirecting into SignIn page');
+                notify("You're Already Registered !!");
+                setTimeout(() => {
+                    Router.replace('/');
+                }, 100);
+            }
         }
 
         console.log(userName, secret, 'clicked');
@@ -117,6 +131,7 @@ function Auth() {
                             sx={{ color: 'warning.main', width: 1 }}
                             id="email"
                             label="Enter Email"
+                            autoComplete="off"
                             variant="standard"
                             color="primary"
                             type="email"
@@ -215,7 +230,11 @@ function Auth() {
 
                     <div className="row" style={{ marginTop: '-4%' }}>
                         <div className="enter-button-container">
-                            <Button className="enter-button" onClick={onClick}>
+                            <Button
+                                className="enter-button"
+                                type="submit"
+                                onClick={onClick}
+                            >
                                 <div>Register</div>
                                 <ArrowForwardIcon fontSize="medium"></ArrowForwardIcon>
                             </Button>
@@ -223,6 +242,7 @@ function Auth() {
                     </div>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     );
 }

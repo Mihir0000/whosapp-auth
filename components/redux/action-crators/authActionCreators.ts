@@ -5,6 +5,9 @@ import {
     logoutConstant,
 } from '../constants/authConstants';
 import Router from 'next/router';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+const notify = (text: string) => toast(text);
 
 export const registerActionCreator = (userName: string, secret: string) => {
     return async (dispatch: any) => {
@@ -22,14 +25,11 @@ export const registerActionCreator = (userName: string, secret: string) => {
         Backendless.UserService.register(data)
             .then(function (registeredUser) {
                 console.log('new Contact instance has been saved');
-                // localStorage.setItem(
-                //     'Backendless',
-                //     JSON.stringify(registeredUser)
-                // );
                 dispatch({
                     type: registerConstant.REGISTER_SUCCESS,
                     payload: data.email,
                 });
+                notify('Login Now');
             })
             .catch(function (error) {
                 console.log('an error has occurred ' + error.message);
@@ -37,6 +37,9 @@ export const registerActionCreator = (userName: string, secret: string) => {
                     type: registerConstant.REGISTER_FAIL,
                     payload: error.message,
                 });
+                if (userName.length === 0 || secret.length === 0) {
+                    notify('Please Enter Valid User or Password');
+                }
 
                 // Backendless.Data.of('whosapp')
                 //     .save(data)
@@ -79,7 +82,7 @@ export const loginActionCreator = (email: string, password: string) => {
             .then(function (loggedInUser: any) {
                 const data = { email, password };
                 if (email.length === 0 || password.length === 0) {
-                    alert('Please Enter Valid Password');
+                    notify('Please Enter Valid User or Password');
                 }
                 const value = localStorage.getItem(
                     'Backendless_2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00'
@@ -88,7 +91,6 @@ export const loginActionCreator = (email: string, password: string) => {
 
                 user.name = loggedInUser.name;
                 localStorage.setItem('Backendless', JSON.stringify(user));
-                // localStorage.setItem('Backendless', JSON.stringify(user));
                 dispatch({
                     type: loginConstant.LOGIN_SUCCESS,
                     payload: data.email,
@@ -96,14 +98,15 @@ export const loginActionCreator = (email: string, password: string) => {
                 setTimeout(() => {
                     // Router.replace('https://chat-ui-backend.vercel.app/');
                     Router.replace('http://localhost:3000/chat');
-                }, 500);
+                }, 2000);
+                notify('Successfully LoggedIn ✅');
             })
             .catch(function (error) {
                 dispatch({
                     type: loginConstant.LOGIN_FAIL,
                     payload: error.message,
                 });
-                alert('Invalid Login or Password');
+                notify('Invalid Login or Password ❌');
             });
     };
 };

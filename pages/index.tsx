@@ -11,12 +11,26 @@ import {
     userLogout,
 } from '../components/redux/action-crators/authActionCreators';
 import { RootStateOrAny } from 'react-redux';
-// var createHost = require('cross-domain-storage/host');
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+var createHost = require('cross-domain-storage/host');
+if (typeof window !== 'undefined') {
+    // Client-side-only code
+    console.log('at Last');
+    var storageHost = createHost([
+        {
+            origin: 'http://localhost:3000',
+            allowedMethods: ['get'],
+        },
+    ]);
+}
 
 function Auth() {
     const { userName, setUserName, secret, setSecret } = useContext(Context);
     const dispatch = useDispatch();
-    const uName = useSelector((state: RootStateOrAny) => state.User.user.email);
+    // const uName = useSelector((state: RootStateOrAny) => state.User.user.email);
+
     // const [localUser, setLocalUser] = useState(null);
     // const [submit, setSubmit] = useState(false);
 
@@ -225,6 +239,7 @@ function Auth() {
                     </div>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     );
 }
