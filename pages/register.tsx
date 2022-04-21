@@ -57,7 +57,7 @@ function Auth() {
             valid = true;
         }
         console.log(existUser);
-        if (userName.length === 0 || secret.length === 0 || !valid) {
+        if (userName.length === 0 || secret.length === 0 || valid === false) {
             notify('Please Enter Valid User or Password');
         } else {
             if (!existUser && valid) {
