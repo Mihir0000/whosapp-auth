@@ -29,7 +29,10 @@ export const registerActionCreator = (userName: string, secret: string) => {
                     type: registerConstant.REGISTER_SUCCESS,
                     payload: data.email,
                 });
-                notify('Login Now');
+                setTimeout(() => {
+                    notify('Login Now');
+                }, 1000);
+                notify('Regisration Successful ✅');
             })
             .catch(function (error) {
                 console.log('an error has occurred ' + error.message);
@@ -38,7 +41,9 @@ export const registerActionCreator = (userName: string, secret: string) => {
                     payload: error.message,
                 });
                 if (userName.length === 0 || secret.length === 0) {
-                    notify('Please Enter Valid User or Password');
+                    notify('Please Enter Valid Email or Password');
+                } else {
+                    notify("You're Already Registered !!");
                 }
 
                 // Backendless.Data.of('whosapp')
@@ -98,7 +103,7 @@ export const loginActionCreator = (email: string, password: string) => {
                 setTimeout(() => {
                     // Router.replace('https://chat-ui-backend.vercel.app/');
                     Router.replace('http://localhost:3000/chat');
-                }, 2000);
+                }, 1500);
                 notify('Successfully LoggedIn ✅');
             })
             .catch(function (error) {

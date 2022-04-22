@@ -58,21 +58,18 @@ function Auth() {
         }
         console.log(existUser);
         if (userName.length === 0 || secret.length === 0 || valid === false) {
-            notify('Please Enter Valid User or Password');
+            notify('Please Enter Valid Email or Password');
         } else {
             if (!existUser && valid) {
                 dispatch(registerActionCreator(userName, secret));
-                notify('Regisration Successful ✅');
-                setTimeout(() => {
-                    Router.replace('/');
-                }, 100);
-            } else {
-                // notify('Redirecting into SignIn page');
-                notify("You're Already Registered !!");
-                setTimeout(() => {
-                    Router.replace('/');
-                }, 100);
+                // notify('Regisration Successful ✅');
             }
+            else{
+                notify("You're Already Registered !!");
+            }
+            setTimeout(() => {
+                Router.replace('/');
+            }, 100);
         }
 
         console.log(userName, secret, 'clicked');
