@@ -73,6 +73,9 @@
     font-size: medium;
     font-weight: 600;
     font-family: Helvetica, sans-serif;
+    background-color: white;
+    font-weight: 900;
+    color: black;
 }
 
 .active-button {
