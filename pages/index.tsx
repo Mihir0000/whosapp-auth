@@ -14,21 +14,20 @@ import { RootStateOrAny } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-var createHost = require('cross-domain-storage/host');
-if (typeof window !== 'undefined') {
-    // Client-side-only code
-    console.log('at Last');
-    var storageHost = createHost([
-        {
-            origin: 'http://localhost:3000',
-            allowedMethods: ['get'],
-        },
-        {
-            origin: 'https://chat-ui-backend.vercel.app',
-            allowedMethods: ['get'],
-        },
-    ]);
-}
+// var createHost = require('cross-domain-storage/host');
+// if (typeof window !== 'undefined') {
+//     // Client-side-only code
+//     var storageHost = createHost([
+//         {
+//             origin: 'http://localhost:3000',
+//             allowedMethods: ['get'],
+//         },
+//         {
+//             origin: 'https://chat-ui-backend.vercel.app',
+//             allowedMethods: ['get'],
+//         },
+//     ]);
+// }
 
 function Auth() {
     const { userName, setUserName, secret, setSecret } = useContext(Context);
@@ -39,52 +38,6 @@ function Auth() {
     // const [localUser, setLocalUser] = useState(null);
     // const [submit, setSubmit] = useState(false);
 
-    // const localData = localStorage.getItem(
-    //     'Backendless_2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00'
-    // );
-
-    // if (typeof localData === 'string') {
-    //     console.log(JSON.parse(localData));
-    // }
-    // if (localUser) {
-    //     // console.log(localUser);
-    //     const {
-    //         'current-user-id': currentUser,
-    //         stayLoggedIn,
-    //         'user-token': userToken,
-    //     } = localUser;
-    //     // console.log(currentUser, stayLoggedIn, userToken);
-    // }
-
-    // const [value, setValue] = useState<any>({});
-    // function setting_submit() {
-    //     setValue(
-    //         localStorage.getItem(
-    //             'Backendless_2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00'
-    //         )
-    //     );
-
-    // }
-
-    // function setcookie() {
-    //     var user;
-    //     console.log('value', value);
-
-    //     if (value && userName) {
-    //         console.log('inside value and username');
-    //         user = !!value ? JSON.parse(value) : undefined;
-    //         var user_name = userName.split('@')[0];
-    //         // console.log(user_name);
-    //         console.log('userName +value', userName);
-
-    //         user.user_name = user_name;
-    //         localStorage.setItem(
-    //             'Backendless_2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00',
-    //             JSON.stringify(user)
-    //         );
-    //         // setLocalUser(user);
-    //     }
-    // }
     useEffect(() => {
         // localStorage.removeItem('Backendless');
         // localStorage.removeItem(
@@ -95,53 +48,14 @@ function Auth() {
 
     const submitHandler = (e: any) => {
         e.preventDefault();
-        // const value = localStorage.getItem(
-        //     'Backendless_2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00'
-        // );
-        // console.log(userName);
-
-        // var user;
-        // if (value && userName) {
-        //     user = !!value ? JSON.parse(value) : undefined;
-        //     var user_name = userName.split('@')[0];
-        //     console.log(user_name);
-        //     console.log(userName);
-
-        //     user.user_name = user_name;
-        //     localStorage.setItem(
-        //         'Backendless_2C1B1F9E-7BEE-C020-FF8D-B4A820E4DB00',
-        //         JSON.stringify(user)
-        //     );
-        //     setLocalUser(user);
-        // }
-        // setSubmit(true);
     };
-    // useEffect(() => {
-    //     console.log('using host');
-    //     var storageHost = createHost([
-    //         {
-    //             origin: 'https://chat-ui-backend.vercel.app/',
-    //             allowedMethods: ['get', 'set', 'remove'],
-    //         },
-    //         {
-    //             origin: 'https://whosapp-auth.vercel.app/chat',
-    //             allowedMethods: ['get', 'set', 'remove'],
-    //         },
-    //         {
-    //             origin: 'http://localhost:3000',
-    //             allowedMethods: ['get', 'set', 'remove'],
-    //         },
-    //     ]);
-    // }, []);
 
     const signInHandler = () => {
         const btn = document.getElementById('enter-button') as HTMLInputElement;
-        console.log(btn);
 
         setDisable(true);
         setTimeout(() => {
             setDisable(false);
-            console.log(btn);
         }, 3000);
         dispatch(loginActionCreator(userName, secret));
         dispatch(userActionCreator());

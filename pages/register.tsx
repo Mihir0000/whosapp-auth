@@ -47,12 +47,10 @@ function Auth() {
 
     const onClick = () => {
         const btn = document.getElementById('enter-button') as HTMLInputElement;
-        console.log(btn);
 
         setDisable(true);
         setTimeout(() => {
-            setDisable(false)
-            console.log(btn);
+            setDisable(false);
         }, 3000);
         let existUser: boolean = false;
         let valid: boolean = false;
@@ -240,7 +238,7 @@ function Auth() {
                             <Button
                                 id="enter-button"
                                 type="submit"
-                                disabled = {disable}
+                                disabled={disable}
                                 onClick={onClick}
                             >
                                 <div>Register</div>
