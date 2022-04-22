@@ -80,6 +80,11 @@ function Auth() {
 
                         <Button
                             className="white-font-buttons"
+                            style={{
+                                backgroundColor: 'white',
+                                // fontWeight: '900',
+                                // color: 'black',
+                            }}
                             disabled={true}
                         >
                             Sign In

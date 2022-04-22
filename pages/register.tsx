@@ -106,7 +106,15 @@ function Auth() {
                         </Link>
                         <div style={{ margin: 5 }}></div>
 
-                        <Button className="white-font-buttons" disabled={true}>
+                        <Button
+                            className="white-font-buttons"
+                            disabled={true}
+                            style={{
+                                backgroundColor: 'white',
+                                // fontWeight: '900',
+                                // color: 'black',
+                            }}
+                        >
                             Register
                         </Button>
                         <div style={{ margin: 5 }}></div>
