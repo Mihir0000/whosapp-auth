@@ -111,8 +111,8 @@ function Auth() {
                             disabled={true}
                             style={{
                                 backgroundColor: 'white',
-                                // fontWeight: '900',
-                                // color: 'black',
+                                fontWeight: '900',
+                                color: 'black',
                             }}
                         >
                             Register
