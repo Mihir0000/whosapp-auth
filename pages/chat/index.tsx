@@ -13,6 +13,10 @@ if (typeof window !== 'undefined') {
             origin: 'http://localhost:3000',
             allowedMethods: ['get'],
         },
+        {
+            origin: 'https://chat-ui-backend.vercel.app',
+            allowedMethods: ['get'],
+        },
     ]);
 }
 

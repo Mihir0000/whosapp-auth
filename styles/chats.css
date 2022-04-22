@@ -85,7 +85,7 @@
     border-right: 3px solid #161533;
 }
 
-.enter-button {
+#enter-button {
     color: #e1e9ff;
     background-color: #011343;
     display: flex;

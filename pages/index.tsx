@@ -23,12 +23,17 @@ if (typeof window !== 'undefined') {
             origin: 'http://localhost:3000',
             allowedMethods: ['get'],
         },
+        {
+            origin: 'https://chat-ui-backend.vercel.app',
+            allowedMethods: ['get'],
+        },
     ]);
 }
 
 function Auth() {
     const { userName, setUserName, secret, setSecret } = useContext(Context);
     const dispatch = useDispatch();
+    const [disable, setDisable] = useState(false);
     // const uName = useSelector((state: RootStateOrAny) => state.User.user.email);
 
     // const [localUser, setLocalUser] = useState(null);
@@ -130,6 +135,14 @@ function Auth() {
     // }, []);
 
     const signInHandler = () => {
+        const btn = document.getElementById('enter-button') as HTMLInputElement;
+        console.log(btn);
+
+        setDisable(true);
+        setTimeout(() => {
+            setDisable(false);
+            console.log(btn);
+        }, 3000);
         dispatch(loginActionCreator(userName, secret));
         dispatch(userActionCreator());
     };
@@ -228,8 +241,9 @@ function Auth() {
                     <div className="row">
                         <div className="enter-button-container">
                             <Button
-                                className="enter-button"
+                                id="enter-button"
                                 type="submit"
+                                disabled={disable}
                                 onClick={signInHandler}
                             >
                                 <div>Sign In</div>

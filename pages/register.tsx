@@ -25,6 +25,7 @@ function Auth() {
     const AllUserData = useSelector(
         (state: RootStateOrAny) => state.AllUser.data
     );
+    const [disable, setDisable] = useState(false);
 
     useEffect(() => {
         if (pass !== secret || pass === '') {
@@ -43,9 +44,19 @@ function Auth() {
         e.preventDefault();
         console.log('okk');
     };
+
     const onClick = () => {
+        const btn = document.getElementById('enter-button') as HTMLInputElement;
+        console.log(btn);
+
+        setDisable(true);
+        setTimeout(() => {
+            setDisable(false)
+            console.log(btn);
+        }, 3000);
         let existUser: boolean = false;
         let valid: boolean = false;
+
         console.log(existUser);
         for (let i = 0; i < AllUserData.length; i++) {
             if (AllUserData[i].email === userName) {
@@ -63,8 +74,7 @@ function Auth() {
             if (!existUser && valid) {
                 dispatch(registerActionCreator(userName, secret));
                 // notify('Regisration Successful ✅');
-            }
-            else{
+            } else {
                 notify("You're Already Registered !!");
             }
             setTimeout(() => {
@@ -228,8 +238,9 @@ function Auth() {
                     <div className="row" style={{ marginTop: '-4%' }}>
                         <div className="enter-button-container">
                             <Button
-                                className="enter-button"
+                                id="enter-button"
                                 type="submit"
+                                disabled = {disable}
                                 onClick={onClick}
                             >
                                 <div>Register</div>
