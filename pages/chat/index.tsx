@@ -28,7 +28,7 @@ function ChatPage() {
         Router.replace('/');
     };
     const { user } = useSelector((state: any) => state.User);
-    console.log(user);
+    // console.log(user);
 
     if (user.length === 0) {
         return (
